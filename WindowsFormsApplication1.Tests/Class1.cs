@@ -8,7 +8,7 @@ using TestStack.White;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
-
+using System.IO;
   
 namespace WindowsFormsApplication1.Tests
 {
@@ -19,7 +19,10 @@ namespace WindowsFormsApplication1.Tests
         public void FirstSample()
         {
             //http://teststack.azurewebsites.net/White/GettingStarted.html#
-            Application application = Application.Launch(@"C:\Users\david.podhola\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe");
+            string path = Path.GetFullPath(
+                    @"..\..\..\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe"
+            );
+            Application application = Application.Launch(path);
             Window window = application.GetWindow("Form1", InitializeOption.NoCache);
             Button button = window.Get<Button>("save");
             button.Click();
